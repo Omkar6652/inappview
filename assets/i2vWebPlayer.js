@@ -338,7 +338,7 @@ var I2vPlayer = (function () {
             }
             if (!_this.isPlayerSet) {
                 if (e.data instanceof ArrayBuffer) {
-                    console.log("return from array buffer "+e.data);
+                   
                     return;
                 }
                 else {

@@ -49,7 +49,7 @@
   doesnt support
 </video>
 <div
-  [id]="'videoContainer_' + 0"
+  id="videoContainer_0"
   style="
     height: 100%;
     width: 100%;
@@ -74,13 +74,13 @@
 function callclick(){
 
 
-   var sdk = new I2vSdk( "127.0.0.1",
-      "127.0.0.1",
+   var sdk = new I2vSdk( "192.168.1.33",
+      "192.168.1.33",
       "8890",
-      false)
+      true)
      let videoPlayerInstance = sdk.GetLivePlayer(
         'videoContainer_' + 0,
-        '08dca492-9d17-9c23-4cd7-1763a00e0000',
+        '08dca4ac-e5bc-4900-0242-ac1601000000',
         0,
         ''
       );
@@ -88,5 +88,6 @@ function callclick(){
 }
   </script>
   <script src="i2vWebPlayer.js"></script>
+  <script src="jmuxer.js"></script>
 </body>
 </html>

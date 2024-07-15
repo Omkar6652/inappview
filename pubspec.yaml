@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/video_player.html
     - assets/i2vWebPlayer.js
+    - assets/jmuxer.js
     # - assets/h265.mp4
     # - assets/VIDSH.mp4
     # - assets/wagon4.ts
