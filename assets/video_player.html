@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <style>
+      video {
+  object-fit: fill !important;
+}
+
+
+    #player-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 30%;
+    }
+
+    #player {
+      width: 30%;
+      height: 30%;
+    }
+
+    /* Buttons (customize styles as needed) */
+    .control-button {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Web Playa Demo</h1>
+
+<video width="320" height="240" autoplay>
+  <source src="h265.mp4" type="video/mp4">
+  doesnt support
+  
+</video>
+<video width="320" height="240" autoplay>
+  <source src="VIDSH.mp4" type="video/mp4">
+  doesnt support
+</video>
+<video width="320" height="240" autoplay>
+  <source src="wagon4.ts" type="video/ts">
+  doesnt support
+</video>
+<div
+  [id]="'videoContainer_' + 0"
+  style="
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "></div>
+<!--<div *ngIf="isDahua" style="height:100%;position:absolute;top:0;width:100%">
+    <app-dahua-video-plugin [isTwoWayAudio]="liveViewService.isTwoWayAudio" [resource]="resource" [timeRange]="timeRange" [playbackMode]="playbackMode"></app-dahua-video-plugin>
+</div>
+<div *ngIf="isVlc" style="height:100%;position:absolute;top:0;width:100%">
+    <app-vlc-video-plugin [idx]="idx" [url]="url" [isTwoWayAudio]="liveViewService.isTwoWayAudio"></app-vlc-video-plugin>
+</div>-->
+<div style="position: absolute; left: 50%; top: 50%" *ngIf="isLoading">
+  <i
+    class="fa fa-circle-o-notch fa-spin"
+    style="font-size: 24px; color: white"></i>
+</div>
+<button onclick="callclick()">click to play</button>
+
+<script>
+function callclick(){
+
+
+   var sdk = new I2vSdk( "192.168.5.151",
+      "192.168.5.151",
+      "8890",
+      false)
+     let videoPlayerInstance = sdk.GetLivePlayer(
+        'videoContainer_' + 0,
+        '08dc9f47-c142-6bdb-4cd7-176320a20000',
+        0,
+        ''
+      );
+}
+  </script>
+  <script src="i2vWebPlayer.js"></script>
+</body>
+</html>

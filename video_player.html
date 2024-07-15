@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <style>
+    #player-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 30%;
+    }
+
+    #player {
+      width: 30%;
+      height: 30%;
+    }
+
+    /* Buttons (customize styles as needed) */
+    .control-button {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="player-container">
+    <video id="player" width="100%" controls autoplay></video>
+    <div id="content-container"></div>
+    <div id="controls">
+        <button class="control-button" id="play-pause">Play/Pause</button>
+        <button class="control-button" id="fullscreen">Fullscreen</button>
+    </div>
+</div>
+
+<script>
+    const player = document.getElementById('player');
+    const playPauseButton = document.getElementById('play-pause');
+    const fullscreenButton = document.getElementById('fullscreen');
+    const contentContainer = document.getElementById('content-container');
+    
+    playPauseButton.addEventListener('click', () => {
+      addNewTag('p', 'This is a dynamically added paragraph.');
+      console.log("playpausebuttonm")
+      if (player.paused) {
+        player.play();
+      } else {
+        player.pause();
+      }
+    });
+   
+    function addNewTag(tagName, content) {
+        const newTag = document.createElement(tagName);
+        newTag.textContent = content;
+        contentContainer.appendChild(newTag);
+      }
+    fullscreenButton.addEventListener('click', () => {
+      // Implement fullscreen logic using JavaScript APIs or libraries
+      // (consider using a fullscreen library like `screenfull.js`)
+    });
+  </script>
+</body>
+</html>
