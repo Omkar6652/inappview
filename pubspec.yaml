@@ -62,9 +62,9 @@ flutter:
   assets:
     - assets/video_player.html
     - assets/i2vWebPlayer.js
-    - assets/h265.mp4
-    - assets/VIDSH.mp4
-    - assets/wagon4.ts
+    # - assets/h265.mp4
+    # - assets/VIDSH.mp4
+    # - assets/wagon4.ts
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

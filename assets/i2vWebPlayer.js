@@ -165,13 +165,26 @@ var I2vPlayer = (function () {
         this.IsPlayerServerConnected = false;
         this.URL_Server_Not_Connected = false;
         this.w = new WebSocket("".concat(protocolType, "://").concat(this.wPlayerIp, ":").concat(port, "?cameraId~~").concat(this.cameraId, "&&mode~~").concat(this.mode, "&&streamType~~").concat(this.streamType, "&&startTime~~").concat(this.startTime, "&&endTime~~").concat(this.endTime, "&&analyticType~~").concat(this.analyticType, "&&connectionMode~~").concat(this.connectionMode, "&&wServerIp~~").concat(this.wServerIp, "&&wServerPort~~").concat(this.wServerPort, "&&clVersion~~").concat(this.clVersion, "&&playbackSpeed~~").concat(this.playbackSpeed));
+        console.log(this.w.url);
         this.w.binaryType = 'arraybuffer';
         this.w.addEventListener('open', function (event) {
             _this.doesStopRequested = false;
             _this.w.send('Hello Server!');
             console.log("Hello Server");
         });
+        this.w.addEventListener("error",function (event) {
+           
+
+           
+            console.log('Event type:', event.type);
+            console.log('Event target:', event.target);
+            console.log(event.target);
+           let keys = Object.keys(event.target) ; keys.forEach((key)=>{console.log(key)});
+           
+
+        })
         this.w.addEventListener('close', function (event) {
+            
             if (_this.doesStopRequested) {
                 console.log('socket closed');
                 _this.removeErrorMessage();
@@ -179,7 +192,7 @@ var I2vPlayer = (function () {
             else {
                 console.log('socket closed and retrying...');
                 if (_this.IsPlayerServerConnected) {
-                    var errMsg = "Player Server Not Connected ";
+                    var err = "Player Server Not Connected ";
                     _this.showErrorMessage(errMsg);
                 }
                 else if (_this.URL_Server_Not_Connected) {
@@ -229,9 +242,7 @@ var I2vPlayer = (function () {
                 }, 3000);
             }
         });
-        console.log(
-            "133  no error yet"
-        )
+       
         this.w.addEventListener('message', function (e) {
             console.log("websocket called");
             _this.IsEmptyUrl = false;
